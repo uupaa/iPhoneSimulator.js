@@ -1,6 +1,6 @@
 # iPhoneSimulator.js [![Build Status](https://travis-ci.org/uupaa/iPhoneSimulator.js.png)](http://travis-ci.org/uupaa/iPhoneSimulator.js)
 
-[![npm](https://nodei.co/npm/iphonesimulator.png?downloads=true&stars=true)](https://nodei.co/npm/iphonesimulator/)
+[![npm](https://nodei.co/npm/uupaa.iphonesimulator.js.png?downloads=true&stars=true)](https://nodei.co/npm/uupaa.iphonesimulator.js/)
 
 Run iPhone Simulator.
 
