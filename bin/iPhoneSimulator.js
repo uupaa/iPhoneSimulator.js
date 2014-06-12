@@ -40,7 +40,10 @@ if (options.verbose) {
 }
 
 if (options.open) {
-    Process.exec("http-server -p " + options.port, function(err, stdout, stderr) { });
+    var cwd = process.cwd(); // ~/xxx/Foo.js
+  //console.log(__dirname);  // ~/xxx/Foo.js/node_modules/uupaa.iphonesimulator.js/bin
+
+    Process.exec("http-server " + cwd + " -p " + options.port, function(err, stdout, stderr) { });
 
     var findCommand = "find /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs -name MobileSafari.app"
 

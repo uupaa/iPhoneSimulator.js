@@ -1,6 +1,6 @@
 {
   "name":           "uupaa.iphonesimulator.js",
-  "version":        "0.0.3",
+  "version":        "0.0.4",
   "description":    "Run iPhone simulator.",
   "url":            "https://github.com/uupaa/iPhoneSimulator.js",
   "keywords":       ["WebModule", "Unstable"],
