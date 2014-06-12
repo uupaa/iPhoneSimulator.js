@@ -1,6 +1,6 @@
 {
   "name":           "uupaa.iphonesimulator.js",
-  "version":        "0.0.2",
+  "version":        "0.0.3",
   "description":    "Run iPhone simulator.",
   "url":            "https://github.com/uupaa/iPhoneSimulator.js",
   "keywords":       ["WebModule", "Unstable"],
@@ -22,12 +22,12 @@
     "lint":         "node node_modules/uupaa.plato.js; open lint/plato/index.html"
   },
   "x-build": {
-    "source":       ["lib/iPhoneSimulator.js"],
-    "output":       "release/iPhoneSimulator.min.js",
-    "target":       ["all"],
-    "label":        ["@dev"],
+    "source":       [],
+    "output":       "",
+    "target":       [],
+    "label":        [],
     "module": {
-      "develop":    ["uupaa.valid.js"],
+      "develop":    [],
       "release":    []
     }
   },
