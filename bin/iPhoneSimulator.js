@@ -9,6 +9,8 @@ var USAGE = _multiline(function() {/*
                                     [--run]
                                     [--port port-number]
                                     [--open absolute-url-or-relative-path]
+                                    [--xcache]
+                                    [--nocache]
 
     See:
         https://github.com/uupaa/iPhoneSimulator.js/wiki/iPhoneSimulator.js
@@ -30,7 +32,8 @@ var options = _parseCommandLineOptions({
         verbose:    false,      // Boolean: verbose mode.
         run:        false,      // Boolean: run http-server.
         port:       8585,       // URLString: port number.
-        open:       ""          // URLString: url or path.
+        open:       "",         // URLString: url or path.
+        xcache:     false       // Boolean: cache busting
     });
 
 if (options.help) {
@@ -62,7 +65,10 @@ if (options.open) {
                 " " + path +
                 " -u " + options.open;
 
-        // console.log(openCommand);
+        if (options.xcache) {
+            openCommand += "?_=" + Date.now();
+        }
+     // console.log(openCommand);
 
         Process.exec(openCommand, function(err, stdout, stderr) { });
     });
@@ -78,7 +84,9 @@ function _parseCommandLineOptions(options) { // @arg Object:
         case "--verbose":   options.verbose = true; break;
         case "--run":       options.run = true; break;
         case "--port":      options.port = argv[++i]; break;
-        case "--open":      options.open = argv[++i];
+        case "--open":      options.open = argv[++i]; break;
+        case "--nocache":
+        case "--xcache":    options.xcache = true;
         }
     }
     if (options.open) {
