@@ -48,7 +48,12 @@ if (options.run) {
   //console.log(__dirname);  // ~/xxx/Foo.js/node_modules/uupaa.iphonesimulator.js/bin
     var cwd = process.cwd(); // ~/xxx/Foo.js
 
-    Process.exec("http-server " + cwd + " -p " + options.port, function(err, stdout, stderr) { });
+    var serverCommand = "http-server " + cwd + " -p " + options.port;
+
+    if (options.xcache) {
+        serverCommand += " -c-1";
+    }
+    Process.exec(serverCommand, function(err, stdout, stderr) { });
 }
 
 if (options.open) {
