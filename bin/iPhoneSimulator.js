@@ -6,6 +6,7 @@ var USAGE = _multiline(function() {/*
     Usage:
         node bin/iPhoneSimulator.js [--help]
                                     [--verbose]
+                                    [--run]
                                     [--port port-number]
                                     [--open absolute-url-or-relative-path]
 
@@ -25,8 +26,9 @@ var Process = require("child_process");
 
 var argv    = process.argv.slice(2);
 var options = _parseCommandLineOptions({
-        help:       false,      // Boolean: true is show help.
-        verbose:    false,      // Boolean: true is verbose mode.
+        help:       false,      // Boolean: show help.
+        verbose:    false,      // Boolean: verbose mode.
+        run:        false,      // Boolean: run http-server.
         port:       8585,       // URLString: port number.
         open:       ""          // URLString: url or path.
     });
@@ -39,12 +41,14 @@ if (options.help) {
 if (options.verbose) {
 }
 
-if (options.open) {
-    var cwd = process.cwd(); // ~/xxx/Foo.js
+if (options.run) {
   //console.log(__dirname);  // ~/xxx/Foo.js/node_modules/uupaa.iphonesimulator.js/bin
+    var cwd = process.cwd(); // ~/xxx/Foo.js
 
     Process.exec("http-server " + cwd + " -p " + options.port, function(err, stdout, stderr) { });
+}
 
+if (options.open) {
     var findCommand = "find /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs -name MobileSafari.app"
 
     Process.exec(findCommand, function(err, stdout, stderr) {
@@ -72,6 +76,7 @@ function _parseCommandLineOptions(options) { // @arg Object:
         case "--help":      options.help = true; break;
         case "-v":
         case "--verbose":   options.verbose = true; break;
+        case "--run":       options.run = true; break;
         case "--port":      options.port = argv[++i]; break;
         case "--open":      options.open = argv[++i];
         }
